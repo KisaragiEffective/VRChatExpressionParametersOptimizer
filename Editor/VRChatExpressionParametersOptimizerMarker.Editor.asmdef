@@ -1,0 +1,8 @@
+{
+  "name": "VRChatExpressionParametersOptimizerMarker.Editor",
+  "autoReferenced": false,
+  "allowUnsafeCode": false,
+  "references": [
+    "GUID:940956a499b048c9945ddbfe8a5d25b1"
+  ]
+}
