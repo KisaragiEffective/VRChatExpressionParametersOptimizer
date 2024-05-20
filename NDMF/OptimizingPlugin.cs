@@ -69,13 +69,7 @@ namespace VRChatExpressionParametersOptimizer.NDMF
         }
         
         private static int CountBits(IEnumerable<VRCExpressionParameters.Parameter> parameters) =>
-            parameters.Aggregate(0, (bits, param) => bits + param.valueType switch
-            {
-                VRCExpressionParameters.ValueType.Int => 8,
-                VRCExpressionParameters.ValueType.Float => 8,
-                VRCExpressionParameters.ValueType.Bool => 1,
-                _ => throw new ArgumentOutOfRangeException()
-            });
+            parameters.Aggregate(0, (bits, param) => bits + VRCExpressionParameters.TypeCost(param.valueType));
         
         private static IEnumerable<AnimatorTransitionBase> GatherTransitions(AnimatorStateMachine asm)
         {
