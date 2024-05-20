@@ -1,0 +1,18 @@
+{
+  "name": "io.github.kisaragieffective.vrchat-expression-parameters-optimizer",
+  "version": "0.1.0",
+  "description": "Optimize your ExpressionParameter as NDMF pass",
+  "displayName": "VRChatExpressionParametersOptimizer",
+  "unity": "2022.3",
+  "author": {
+    "name": "Kisaragi Marine",
+    "email": "kisaragi.marine@gmail.com",
+    "url": "https://github.com/kisaragieffective"
+  },
+  "dependencies": {
+    "com.vrchat.avatars": "3.5.0",
+    "nadena.dev.ndmf": "1.4.0"
+  },
+  "keywords": ["vrchat", "expressionparameter", "optimize"],
+  "license": "MIT"
+}
