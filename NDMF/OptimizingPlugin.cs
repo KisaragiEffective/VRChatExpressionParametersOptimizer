@@ -56,7 +56,16 @@ namespace VRChatExpressionParametersOptimizer.NDMF
             clonedExParams.name += "(slimed down)";
             clonedExParams.parameters = clonedExParams.parameters.Where(x => actuallyReferencedVariable.Contains(x.name)).ToArray();
             Debug.Log($"slimed down: {CountBits(ad.expressionParameters.parameters)} bits -> {CountBits(clonedExParams.parameters)} bits");
-            ad.expressionParameters = clonedExParams;
+            
+            RecordAndAssign(ref ad.expressionParameters, clonedExParams);
+        }
+
+        private static void RecordAndAssign<TDest, TSource>(ref TDest lhs, TSource source) 
+            where TSource: TDest
+            where TDest: Object
+        {
+            ObjectRegistry.RegisterReplacedObject(lhs, source);
+            lhs = source;
         }
         
         private static int CountBits(IEnumerable<VRCExpressionParameters.Parameter> parameters) =>
