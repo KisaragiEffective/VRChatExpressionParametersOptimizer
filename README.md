@@ -1,0 +1,3 @@
+# VRChatExpressionParametersOptimizer
+使われていないExpressionParameterのパラメーターを削除するNDMFプラグイン
+
