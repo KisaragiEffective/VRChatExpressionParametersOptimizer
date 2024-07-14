@@ -49,6 +49,7 @@ namespace VRChatExpressionParametersOptimizer.NDMF
                 .SelectMany(GatherTransitions)
                 .SelectMany(trans => trans.conditions)
                 .Select(cond => cond.parameter)
+                .Chain(ReferencedParametersFromMenu(ad).Select(x => x.name))
                 .ToHashSet();
 
             Debug.Log("actually used parameters\n" + string.Join("\n", actuallyReferencedVariable));
@@ -92,6 +93,24 @@ namespace VRChatExpressionParametersOptimizer.NDMF
 
             return transitions.SelectMany(op => op);
         }
+
+        private static IEnumerable<VRCExpressionsMenu.Control.Parameter> ReferencedParametersFromMenu(VRCAvatarDescriptor ad)
+        {
+            return Walk(ad.expressionsMenu);
+
+            IEnumerable<VRCExpressionsMenu.Control.Parameter> Walk(VRCExpressionsMenu menu)
+            {
+                return menu.controls.SelectMany(x => new[] { x.parameter }
+                    .Chain(x.subParameters ?? Array.Empty<VRCExpressionsMenu.Control.Parameter>())
+                    .Chain(x.subMenu != null ? Walk(x.subMenu) : Array.Empty<VRCExpressionsMenu.Control.Parameter>()));
+            }
+        }
+    }
+
+    internal static class LinqExtensions
+    {
+        internal static IEnumerable<T> Chain<T>(this IEnumerable<T> self, IEnumerable<T> other) 
+            => new[] { self, other }.SelectMany(a => a);
     }
 }
 #endif
