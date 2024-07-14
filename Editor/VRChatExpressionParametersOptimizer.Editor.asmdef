@@ -1,5 +1,6 @@
 {
-  "name": "VRChatExpressionParametersOptimizerMarker.Editor",
+  "name": "VRChatExpressionParametersOptimizer.Editor",
+  "rootNamespace": "VRChatExpressionParametersOptimizer.Editor",
   "autoReferenced": false,
   "allowUnsafeCode": false,
   "references": [

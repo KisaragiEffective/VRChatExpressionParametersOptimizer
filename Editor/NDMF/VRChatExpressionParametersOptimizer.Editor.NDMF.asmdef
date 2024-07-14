@@ -1,7 +1,8 @@
 {
-  "name": "VRChatExpressionParametersOptimizer.NDMF",
+  "name": "VRChatExpressionParametersOptimizer.Editor.NDMF",
   "autoReferenced": false,
   "allowUnsafeCode": false,
+  "rootNamespace": "VRChatExpressionParametersOptimizer.Editor.NDMF",
   "references": [
     "GUID:62ced99b048af7f4d8dfe4bed8373d76"
   ],
