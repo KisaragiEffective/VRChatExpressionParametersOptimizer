@@ -1,3 +1,4 @@
+#if KISARAGI_VRCHAT_EXPARAM_OPTIMIZER_NDMF && UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +7,11 @@ using UnityEditor.Animations;
 using UnityEngine;
 using VRC.SDK3.Avatars.Components;
 using VRC.SDK3.Avatars.ScriptableObjects;
-using VRChatExpressionParametersOptimizer.NDMF;
 using Object = UnityEngine.Object;
+using static VRChatExpressionParametersOptimizer.Editor.RecursiveWalker;
 
-[assembly: ExportsPlugin(typeof(OptimizingPlugin))]
-namespace VRChatExpressionParametersOptimizer.NDMF
+[assembly: ExportsPlugin(typeof(VRChatExpressionParametersOptimizer.Editor.NDMF.OptimizingPlugin))]
+namespace VRChatExpressionParametersOptimizer.Editor.NDMF
 {
     public class OptimizingPlugin: Plugin<OptimizingPlugin>
     {
@@ -48,6 +49,7 @@ namespace VRChatExpressionParametersOptimizer.NDMF
                 .SelectMany(GatherTransitions)
                 .SelectMany(trans => trans.conditions)
                 .Select(cond => cond.parameter)
+                .Chain(ReferencedParametersFromMenu(ad).Select(x => x.name))
                 .ToHashSet();
 
             Debug.Log("actually used parameters\n" + string.Join("\n", actuallyReferencedVariable));
@@ -67,29 +69,6 @@ namespace VRChatExpressionParametersOptimizer.NDMF
             ObjectRegistry.RegisterReplacedObject(lhs, source);
             lhs = source;
         }
-        
-        private static int CountBits(IEnumerable<VRCExpressionParameters.Parameter> parameters) =>
-            parameters.Aggregate(0, (bits, param) => bits + VRCExpressionParameters.TypeCost(param.valueType));
-        
-        private static IEnumerable<AnimatorTransitionBase> GatherTransitions(AnimatorStateMachine asm)
-        {
-            var transitions = new List<IEnumerable<AnimatorTransitionBase>> { asm.entryTransitions, asm.anyStateTransitions, };
-            Debug.Log($"VEPO - {asm.name}: checking {asm.stateMachines.Length} state machines");
-            if (asm.stateMachines.Length > 0)
-            {
-                var op = asm.stateMachines.Select(y =>
-                    GatherTransitions(y.stateMachine));
-                transitions.AddRange(op);
-            }
-            else
-            {
-                transitions.AddRange(asm.stateMachines.Select(y => asm.GetStateMachineTransitions(y.stateMachine)));
-                transitions.AddRange(asm.states.Select(x => x.state).Select(x => x.transitions));
-            }
-                    
-            Debug.Log($"VEPO - {asm.name}: checking {transitions.Count} transitions");
-
-            return transitions.SelectMany(op => op);
-        }
     }
 }
+#endif
