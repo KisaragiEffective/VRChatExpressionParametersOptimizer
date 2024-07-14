@@ -7,11 +7,10 @@ using UnityEditor.Animations;
 using UnityEngine;
 using VRC.SDK3.Avatars.Components;
 using VRC.SDK3.Avatars.ScriptableObjects;
-using VRChatExpressionParametersOptimizer.NDMF;
 using Object = UnityEngine.Object;
 
-[assembly: ExportsPlugin(typeof(OptimizingPlugin))]
-namespace VRChatExpressionParametersOptimizer.NDMF
+[assembly: ExportsPlugin(typeof(VRChatExpressionParametersOptimizer.Editor.NDMF.OptimizingPlugin))]
+namespace VRChatExpressionParametersOptimizer.Editor.NDMF
 {
     public class OptimizingPlugin: Plugin<OptimizingPlugin>
     {
