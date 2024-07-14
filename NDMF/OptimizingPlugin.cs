@@ -1,3 +1,4 @@
+#if KISARAGI_VRCHAT_EXPARAM_OPTIMIZER_NDMF && UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,3 +94,4 @@ namespace VRChatExpressionParametersOptimizer.NDMF
         }
     }
 }
+#endif

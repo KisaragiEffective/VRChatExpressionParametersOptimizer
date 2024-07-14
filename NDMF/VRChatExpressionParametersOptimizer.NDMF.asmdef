@@ -4,5 +4,12 @@
   "allowUnsafeCode": false,
   "references": [
     "GUID:62ced99b048af7f4d8dfe4bed8373d76"
+  ],
+  "versionDefines": [
+    {
+      "name": "nadena.dev.ndmf",
+      "expression": "",
+      "define": "KISARAGI_VRCHAT_EXPARAM_OPTIMIZER_NDMF"
+    }
   ]
 }
