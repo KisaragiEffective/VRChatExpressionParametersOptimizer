@@ -15,3 +15,14 @@ Modular Avatarの[Extract Menu](https://modular-avatar.nadena.dev/ja/docs/tutori
 |VRChat|2019.x|unsupported|
 |VRChat|2022.x|supported|
 |*|*|unsuppoered|
+
+## トラブルシューティング
+### パラメーター超過時の対応
+コントロールパネルがExpression Parameterについて同期パラメーターのビット数の制限の超過を報告する場合、以下の手順でビット数の評価を実際のビルド時まで遅延させることで回避することができます。
+
+1. Modular Avatarをインストールする
+2. [Extract Menu](https://modular-avatar.nadena.dev/ja/docs/tutorials/menu) で再帰的にメニューを展開する
+3. 呼び出さないメニューを消す
+4. ビルドし直す
+
+もしどうしてもModular Avatarを使うことが難しい場合、さやまめさんが作成した[Upload-without-preCheck](https://github.com/Sayamame-beans/Upload-without-preCheck) を使用してください。
