@@ -1,7 +1,8 @@
 {
     "name": "VRChatExpressionParametersOptimizer.Editor",
     "references": [
-        "GUID:940956a499b048c9945ddbfe8a5d25b1"
+        "GUID:940956a499b048c9945ddbfe8a5d25b1",
+        "GUID:62ced99b048af7f4d8dfe4bed8373d76"
     ],
     "includePlatforms": [
         "Editor"
