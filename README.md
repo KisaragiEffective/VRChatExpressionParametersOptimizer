@@ -16,6 +16,24 @@ Modular Avatarの[Extract Menu](https://modular-avatar.nadena.dev/ja/docs/tutori
 |VRChat|2022.x|supported|
 |*|*|unsuppoered|
 
+## インストール
+VPMには対応していません。
+
+1. エディタのツールバーから\[Window > Package Manager\] を開きます
+2. 画面上部の\[+▼\] を押します
+3. `https://github.com/KisaragiEffective/VRChatExpressionParametersOptimizer.git` と入力します
+
+## Getting started
+アバターのルート (`VRC Avatar Descriptor` コンポーネントがついているゲームオブジェクトと同じゲームオブジェクト) に `Expression Parameter Optimizer Setting` を `Add Component` してください。
+
+EPOSは[AAO Trace and Optimize](https://vpm.anatawa12.com/avatar-optimizer/ja/docs/reference/trace-and-optimize/)のように、すべてのAnimatorControllerを自動的に走査し、使われていないパラメーターを削除します。
+
+何らかの理由で特定のパラメーターをEPOSから除外したいときは、新規に作成したゲームオブジェクトに `Marker Exclusion` を `Add Component` し、そのゲームオブジェクトを `Expression Parameter Optimizer Setting` の `Exclusions` に代入します。
+
+`Marker Exclusion` は有効化状態を制御する `Applies` 、パラメーター名に対してマッチさせる正規表現 `Exclusion Name Pattern`、処理内容に影響を及ぼさない自由記述かつエンドユーザーがメモとして使用することができる `Comment` からなります。
+
+`Exclusion Name Pattern` に指定する正規表現は　[C# の正規表現](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference) として有効な構文にしてください。無効な構文を与えた場合、ツールはエラーを報告しアップロードが阻止されます。
+
 ## トラブルシューティング
 ### パラメーター超過時の対応
 コントロールパネルがExpression Parameterについて同期パラメーターのビット数の制限の超過を報告する場合、以下の手順でビット数の評価を実際のビルド時まで遅延させることで回避することができます。
