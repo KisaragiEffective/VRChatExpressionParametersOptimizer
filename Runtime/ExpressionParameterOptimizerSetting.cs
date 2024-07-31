@@ -3,7 +3,8 @@ using VRC.SDKBase;
 
 namespace VRChatExpressionParametersOptimizer.Runtime
 {
-    public class VRChatExpressionParametersOptimizerMarker : MonoBehaviour, IEditorOnly
+    [DisallowMultipleComponent]
+    public class ExpressionParameterOptimizerSetting : MonoBehaviour, IEditorOnly
     {
         public MarkerExclusion[] Exclusions;
     }

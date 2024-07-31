@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.Serialization;
+using VRC.SDKBase;
 
 namespace VRChatExpressionParametersOptimizer.Runtime
 {
-    public class MarkerExclusion : ScriptableObject
+    public class MarkerExclusion : MonoBehaviour, IEditorOnly
     {
         public bool Applies;
-        public string Regex;
+        [FormerlySerializedAs("Regex")]
+        public string ExclusionNamePattern;
         public string Comment;
     }
 }
