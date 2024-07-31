@@ -12,7 +12,7 @@ namespace VRChatExpressionParametersOptimizer.Editor
         public override VisualElement CreateInspectorGUI()
         {
             var root = new VisualElement();
-            var target = (this.target as VRChatExpressionParametersOptimizerMarker)!;
+            var target = (this.target as ExpressionParameterOptimizerSetting)!;
             var fold = new Foldout();
             fold.Add(new Label("除外設定"));
             return root;
