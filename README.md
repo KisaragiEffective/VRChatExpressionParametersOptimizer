@@ -44,3 +44,13 @@ EPOSは[AAO Trace and Optimize](https://vpm.anatawa12.com/avatar-optimizer/ja/do
 4. ビルドし直す
 
 もしどうしてもModular Avatarを使うことが難しい場合、さやまめさんが作成した[Upload-without-preCheck](https://github.com/Sayamame-beans/Upload-without-preCheck) を使用してください。
+
+## 実装の詳細
+このプラグインはNDMFの[`BuildPhase.Optimizing`](https://ndmf.nadena.dev/api/nadena.dev.ndmf.BuildPhase.html) フェーズで動作します。他のプラグインとの前後関係は不定です。
+もし他の最適化プラグインとの食い合わせが悪い場合、issueを立ててください。
+
+このプラグインは、同期する・しない、Expression Parameterに含まれている・いないに関わらず、以下の条件を満たしたパラメーターをすべて削除します。
+
+1. VRC Avatar Descriptorから参照できる
+    * VRC Avatar Descriptorに設定されている各[レイヤー](https://creators.vrchat.com/avatars/playable-layers/) を起点として、そのレイヤー内部に含まれているAnimator Controllerとしてのパラメーターの遷移で使われている場合
+3. 
